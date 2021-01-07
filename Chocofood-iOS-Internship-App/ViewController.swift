@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        NetworkManager().fetchOrders { [weak self] (orders) in
+        NetworkManager().fetchOrders { [] (orders) in
             for order in orders ?? [] {
                 print("------")
                 print(order)

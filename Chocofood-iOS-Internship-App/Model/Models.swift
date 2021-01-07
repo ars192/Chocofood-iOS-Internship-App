@@ -11,13 +11,13 @@ import Foundation
 //MARK: - Add CodingKey to pk(?)
 
 struct Order: Codable {
-    let deliveryTariff:     deliveryTariff
-    let deliveryTime:       deliveryTime
-    let restaurant:         restaurant
+    let deliveryTariff:     DeliveryTariff
+    let deliveryTime:       DeliveryTime
+    let restaurant:         Restaurant
     let isTopRestaurant:    Bool
 }
 
-struct deliveryTariff: Codable {
+struct DeliveryTariff: Codable {
     let title:              String
     let conditions:         [Condition]
     let pk:                 String
@@ -28,42 +28,42 @@ struct Condition: Codable {
     let orderMinCost:       Int
 }
 
-struct deliveryTime: Codable{
+struct DeliveryTime: Codable{
     let lowLimitMinutes:    Int
     let upperLimitMinutes:  Int
     let pk:                 String
 }
 
-struct schedule: Codable {
+struct Schedule: Codable {
     let startedWeekDay:     String
-    let startedAt:          time
+    let startedAt:          Time
     let endedWeekDay:       String
-    let endedAt:            time
+    let endedAt:            Time
 }
 
-struct time: Codable {
+struct Time: Codable {
     let hour:               Int
     let minute:             Int
 }
 
-struct paymentMethods: Codable {
+struct PaymentMethods: Codable {
     let cash:               Bool
     let bonus:              Bool
     let card:               Bool
     let rakhmet:            Bool
 }
 
-struct location: Codable {
-    let coordinate:         coordinate
+struct Location: Codable {
+    let coordinate:         Coordinate
     let text:               String
 }
 
-struct coordinate: Codable {
+struct Coordinate: Codable {
     let latitude:           Double
     let longitude:          Double
 }
 
-struct category: Codable {
+struct Category: Codable {
     let title:              String
     let position:           Int
     let activeIcon:         URL
@@ -71,21 +71,17 @@ struct category: Codable {
     let pk:                 String
 }
 
-struct restaurant: Codable {
+struct Restaurant: Codable {
     let title:              String
-    let schedule:           [schedule]
+    let schedule:           [Schedule]
     let logo:               URL
     let image:              URL
     let synonyms:           [String]
-    let paymentMethods:     paymentMethods
+    let paymentMethods:     PaymentMethods
     let willBeDeliveredBy:  String
-    let location:           location
+    let location:           Location
     let pk:                 String
-    let categories:         [category]
+    let categories:         [Category]
     let state:              String
     let rating:             Int
-}
-
-struct Wrapper: Codable {
-    let items: [Order]
 }
