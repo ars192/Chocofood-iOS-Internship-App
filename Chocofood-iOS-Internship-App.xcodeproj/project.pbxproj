@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB27FA1D25A773D200450F24 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27FA1C25A773D200450F24 /* Models.swift */; };
 		FB61F6E325A4BDD800984F2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB61F6E225A4BDD800984F2A /* AppDelegate.swift */; };
 		FB61F6E525A4BDD800984F2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB61F6E425A4BDD800984F2A /* SceneDelegate.swift */; };
 		FB61F6E725A4BDD800984F2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB61F6E625A4BDD800984F2A /* ViewController.swift */; };
 		FB61F6EA25A4BDD800984F2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB61F6E825A4BDD800984F2A /* Main.storyboard */; };
 		FB61F6EC25A4BDDA00984F2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB61F6EB25A4BDDA00984F2A /* Assets.xcassets */; };
 		FB61F6EF25A4BDDA00984F2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB61F6ED25A4BDDA00984F2A /* LaunchScreen.storyboard */; };
+		FBFF358A25A763E9007A2E2F /* task in Resources */ = {isa = PBXBuildFile; fileRef = FBFF358925A763E9007A2E2F /* task */; };
+		FBFF358D25A76432007A2E2F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFF358C25A76432007A2E2F /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB27FA1C25A773D200450F24 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		FB61F6DF25A4BDD800984F2A /* Chocofood-iOS-Internship-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chocofood-iOS-Internship-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB61F6E225A4BDD800984F2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB61F6E425A4BDD800984F2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +28,8 @@
 		FB61F6EB25A4BDDA00984F2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB61F6EE25A4BDDA00984F2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB61F6F025A4BDDA00984F2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBFF358925A763E9007A2E2F /* task */ = {isa = PBXFileReference; lastKnownFileType = text; path = task; sourceTree = "<group>"; };
+		FBFF358C25A76432007A2E2F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB27FA1B25A772D500450F24 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FB27FA1C25A773D200450F24 /* Models.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FB61F6D625A4BDD800984F2A = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +70,7 @@
 		FB61F6E125A4BDD800984F2A /* Chocofood-iOS-Internship-App */ = {
 			isa = PBXGroup;
 			children = (
+				FB27FA1B25A772D500450F24 /* Model */,
 				FB61F6E225A4BDD800984F2A /* AppDelegate.swift */,
 				FB61F6E425A4BDD800984F2A /* SceneDelegate.swift */,
 				FB61F6E625A4BDD800984F2A /* ViewController.swift */,
@@ -63,6 +78,8 @@
 				FB61F6EB25A4BDDA00984F2A /* Assets.xcassets */,
 				FB61F6ED25A4BDDA00984F2A /* LaunchScreen.storyboard */,
 				FB61F6F025A4BDDA00984F2A /* Info.plist */,
+				FBFF358925A763E9007A2E2F /* task */,
+				FBFF358C25A76432007A2E2F /* NetworkManager.swift */,
 			);
 			path = "Chocofood-iOS-Internship-App";
 			sourceTree = "<group>";
@@ -127,6 +144,7 @@
 				FB61F6EF25A4BDDA00984F2A /* LaunchScreen.storyboard in Resources */,
 				FB61F6EC25A4BDDA00984F2A /* Assets.xcassets in Resources */,
 				FB61F6EA25A4BDD800984F2A /* Main.storyboard in Resources */,
+				FBFF358A25A763E9007A2E2F /* task in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +156,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB61F6E725A4BDD800984F2A /* ViewController.swift in Sources */,
+				FBFF358D25A76432007A2E2F /* NetworkManager.swift in Sources */,
 				FB61F6E325A4BDD800984F2A /* AppDelegate.swift in Sources */,
 				FB61F6E525A4BDD800984F2A /* SceneDelegate.swift in Sources */,
+				FB27FA1D25A773D200450F24 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
