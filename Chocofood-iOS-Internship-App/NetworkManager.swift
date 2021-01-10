@@ -8,30 +8,22 @@
 import Foundation
 
 class NetworkManager {
-    func fetchOrders(withCompletion completion: @escaping ([Order]?)  -> Void) {
-            let session = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
-            let url = URL(string: "https://api.jsonbin.io/b/5ff1946009f7c73f1b6d134f")!
-            let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
-                
-                if let error = error {
-                    print("Error with fetch: \(error)")
-                    return
-                }
-                
-                guard let data = data else {
-                    completion(nil)
-                    return
-                }
-                
-//                print(String(data: data, encoding: .utf8)!)
-                
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let decoded = try? decoder.decode([Order].self, from: data)
-                completion(decoded)
-                
-            })
-            task.resume()
+    
+    private var task: URLSessionTask?
+    
+    func request(endPoint: EndPoint, withCompletion completion: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> ()) {
+        
+        var request = URLRequest(url: endPoint.URL.appendingPathComponent(endPoint.path), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
+        request.httpMethod = endPoint.method.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+            completion(data, response, error)
+        })
+        
+        self.task?.resume()
+//        self.task?.cancel()
     }
 }
 

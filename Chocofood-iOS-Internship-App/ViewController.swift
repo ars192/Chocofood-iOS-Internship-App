@@ -12,13 +12,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        NetworkManager().fetchOrders { [] (orders) in
-            for order in orders ?? [] {
-                print("------")
-                print(order)
-                print("------")
-            }
+
+        MarketplaceAPI().fetchOrders { (result, error) in
+            print(result)
         }
     }
     

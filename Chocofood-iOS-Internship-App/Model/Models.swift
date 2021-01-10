@@ -85,3 +85,8 @@ struct Restaurant: Codable {
     let state:              String
     let rating:             Int
 }
+
+struct ErrorModel: Codable {
+    let message:            String
+//    let error:              String        // i tried to fetch invalid id and in the response body there was only message keyword
+}
