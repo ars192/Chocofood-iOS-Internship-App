@@ -12,9 +12,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        MarketplaceAPI().fetchOrders { (result, error) in
-            print(result)
+        let MarketplaceAPI = API(endPoint: MarketplaceEndPoint.fetchOrders)
+        MarketplaceAPI.fetchItems { (result, error) in
+            if let orders = result {
+                for order in orders {
+                    print("----")
+                    dump(order)
+                    print("----")
+                }
+            }
         }
     }
     

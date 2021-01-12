@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FB0B6CE225AB6EDE00D51BC3 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0B6CE125AB6EDE00D51BC3 /* EndPoint.swift */; };
-		FB0B6CE525AB718800D51BC3 /* MarketplaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0B6CE425AB718800D51BC3 /* MarketplaceAPI.swift */; };
+		FB0B6CE525AB718800D51BC3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0B6CE425AB718800D51BC3 /* API.swift */; };
+		FB0B6CEF25AD836A00D51BC3 /* MarketplaceEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0B6CEE25AD836A00D51BC3 /* MarketplaceEndPoint.swift */; };
 		FB27FA1D25A773D200450F24 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27FA1C25A773D200450F24 /* Models.swift */; };
 		FB61F6E325A4BDD800984F2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB61F6E225A4BDD800984F2A /* AppDelegate.swift */; };
 		FB61F6E525A4BDD800984F2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB61F6E425A4BDD800984F2A /* SceneDelegate.swift */; };
@@ -22,7 +23,8 @@
 
 /* Begin PBXFileReference section */
 		FB0B6CE125AB6EDE00D51BC3 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
-		FB0B6CE425AB718800D51BC3 /* MarketplaceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceAPI.swift; sourceTree = "<group>"; };
+		FB0B6CE425AB718800D51BC3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		FB0B6CEE25AD836A00D51BC3 /* MarketplaceEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceEndPoint.swift; sourceTree = "<group>"; };
 		FB27FA1C25A773D200450F24 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		FB61F6DF25A4BDD800984F2A /* Chocofood-iOS-Internship-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chocofood-iOS-Internship-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB61F6E225A4BDD800984F2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +49,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB0B6CED25AD830900D51BC3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FBFF358C25A76432007A2E2F /* NetworkManager.swift */,
+				FB0B6CE125AB6EDE00D51BC3 /* EndPoint.swift */,
+				FB0B6CE425AB718800D51BC3 /* API.swift */,
+				FB0B6CEE25AD836A00D51BC3 /* MarketplaceEndPoint.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		FB27FA1B25A772D500450F24 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +87,7 @@
 		FB61F6E125A4BDD800984F2A /* Chocofood-iOS-Internship-App */ = {
 			isa = PBXGroup;
 			children = (
+				FB0B6CED25AD830900D51BC3 /* Service */,
 				FB27FA1B25A772D500450F24 /* Model */,
 				FB61F6E225A4BDD800984F2A /* AppDelegate.swift */,
 				FB61F6E425A4BDD800984F2A /* SceneDelegate.swift */,
@@ -83,9 +97,6 @@
 				FB61F6ED25A4BDDA00984F2A /* LaunchScreen.storyboard */,
 				FB61F6F025A4BDDA00984F2A /* Info.plist */,
 				FBFF358925A763E9007A2E2F /* task */,
-				FBFF358C25A76432007A2E2F /* NetworkManager.swift */,
-				FB0B6CE125AB6EDE00D51BC3 /* EndPoint.swift */,
-				FB0B6CE425AB718800D51BC3 /* MarketplaceAPI.swift */,
 			);
 			path = "Chocofood-iOS-Internship-App";
 			sourceTree = "<group>";
@@ -162,12 +173,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB61F6E725A4BDD800984F2A /* ViewController.swift in Sources */,
+				FB0B6CEF25AD836A00D51BC3 /* MarketplaceEndPoint.swift in Sources */,
 				FBFF358D25A76432007A2E2F /* NetworkManager.swift in Sources */,
 				FB0B6CE225AB6EDE00D51BC3 /* EndPoint.swift in Sources */,
 				FB61F6E325A4BDD800984F2A /* AppDelegate.swift in Sources */,
 				FB61F6E525A4BDD800984F2A /* SceneDelegate.swift in Sources */,
 				FB27FA1D25A773D200450F24 /* Models.swift in Sources */,
-				FB0B6CE525AB718800D51BC3 /* MarketplaceAPI.swift in Sources */,
+				FB0B6CE525AB718800D51BC3 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

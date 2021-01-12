@@ -7,11 +7,14 @@
 
 import Foundation
 
+public typealias HTTPHeaders = [String:String]
 
 public protocol EndPoint {
-    var URL: URL { get }
+    var url: URL { get }
     var path: String { get }
-    var method: HTTPMethod { get}
+    var method: HTTPMethod { get }
+    var headers: HTTPHeaders? { get }
+//    var cookie: HTTPCookie { get set}
 }
 
 public enum HTTPMethod: String {
