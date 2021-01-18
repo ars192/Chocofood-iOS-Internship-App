@@ -42,27 +42,19 @@ class FeedTableViewCell: UITableViewCell {
     }
     func setupFirstView(with order: Order) {
         firstViewTitle.text = order.restaurant.title
-//        let imageData = try? Data(contentsOf: order.restaurant.image)
-//        if imageData != nil {
-//            firstViewImage.image = UIImage(data: imageData!)
-//        }
         firstViewImage.sd_setImage(with: order.restaurant.image, completed: .none)
-        firstViewRestaurantRating.text = String(order.restaurant.rating)
-        firstViewDeliveryMinimumPrice.text = String(order.deliveryTariff.conditions[0].deliveryCost)
-        firstViewOrderMinimumPrice.text = String(order.deliveryTariff.conditions[0].orderMinCost)
-        firstViewDeliveryMinimumTime.text = String(order.deliveryTime.lowLimitMinutes)
+        firstViewRestaurantRating.text = "\(Double(order.restaurant.rating)*5/100)"
+        firstViewDeliveryMinimumPrice.text = "от \(order.deliveryTariff.conditions[0].deliveryCost) тг"
+        firstViewOrderMinimumPrice.text = "\(order.deliveryTariff.conditions[0].orderMinCost) тг"
+        firstViewDeliveryMinimumTime.text = "\(order.deliveryTime.lowLimitMinutes) мин."
     }
     
     func setupSecondView(with order: Order) {
         secondViewTitle.text = order.restaurant.title
-//        let imageData = try? Data(contentsOf: order.restaurant.image)
-//        if imageData != nil {
-//            secondViewImage.image = UIImage(data: imageData!)
-//        }
         secondViewImage.sd_setImage(with: order.restaurant.image, completed: .none)
-        secondViewRestaurantRating.text = String(order.restaurant.rating)
-        secondViewDeliveryMinimumPrice.text = String(order.deliveryTariff.conditions[0].deliveryCost)
-        secondViewOrderMinimumPrice.text = String(order.deliveryTariff.conditions[0].orderMinCost)
-        secondViewDeliveryMinimumTime.text = String(order.deliveryTime.lowLimitMinutes)
+        secondViewRestaurantRating.text = "\(Double(order.restaurant.rating)*5/100)"
+        secondViewDeliveryMinimumPrice.text = "от \(order.deliveryTariff.conditions[0].deliveryCost) тг"
+        secondViewOrderMinimumPrice.text = "\(order.deliveryTariff.conditions[0].orderMinCost) тг"
+        secondViewDeliveryMinimumTime.text = "\(order.deliveryTime.lowLimitMinutes) мин."
     }
 }

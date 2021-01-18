@@ -31,15 +31,11 @@ class OrderTableViewCell: UITableViewCell {
     func setup(with order: Order) {
         print(order.restaurant.title)
         orderTitle.text = order.restaurant.title
-//        let imageData = try? Data(contentsOf: order.restaurant.image)
-//        if imageData != nil {
-//            orderImage.image = UIImage(data: imageData!)
-//        }
         orderImage.sd_setImage(with: order.restaurant.image, completed: .none)
-        orderRating.text = String(order.restaurant.rating)
-        orderDeliveryMinimumPrice.text = String(order.deliveryTariff.conditions[0].deliveryCost)
-        orderMinimumPrice.text = String(order.deliveryTariff.conditions[0].orderMinCost)
-        orderDeliveryTimeMinimum.text = String(order.deliveryTime.lowLimitMinutes)
+        orderRating.text = "\(Double(order.restaurant.rating)*5/100)"
+        orderDeliveryMinimumPrice.text = "от \(order.deliveryTariff.conditions[0].deliveryCost) тг"
+        orderMinimumPrice.text = "\(order.deliveryTariff.conditions[0].orderMinCost) тг"
+        orderDeliveryTimeMinimum.text = "\(order.deliveryTime.lowLimitMinutes) мин."
     }
         
     override func layoutSubviews() {
