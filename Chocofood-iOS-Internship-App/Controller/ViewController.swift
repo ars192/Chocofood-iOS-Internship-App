@@ -30,8 +30,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 fatalError(error.debugDescription)
             }
         }
-        
-//        self.tableview.reloadData()
     }
 
     func tableView(_ tableView: UITableView,

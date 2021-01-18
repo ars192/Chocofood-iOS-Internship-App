@@ -3,29 +3,46 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B125742C23A102D31F15E9EE /* Pods_Chocofood_iOS_Internship_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696C5B8D8424EA6D5A593AC0 /* Pods_Chocofood_iOS_Internship_App.framework */; };
 		FB0B6CE225AB6EDE00D51BC3 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0B6CE125AB6EDE00D51BC3 /* EndPoint.swift */; };
 		FB0B6CE525AB718800D51BC3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0B6CE425AB718800D51BC3 /* API.swift */; };
 		FB0B6CEF25AD836A00D51BC3 /* MarketplaceEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0B6CEE25AD836A00D51BC3 /* MarketplaceEndPoint.swift */; };
 		FB27FA1D25A773D200450F24 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27FA1C25A773D200450F24 /* Models.swift */; };
+		FB4DACE825B58B4200629C1A /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4DACE725B58B4200629C1A /* JSONParameterEncoder.swift */; };
+		FB4DACEB25B58B7F00629C1A /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4DACEA25B58B7F00629C1A /* ParameterEncoding.swift */; };
+		FB4DACEE25B58C2C00629C1A /* URLParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4DACED25B58C2C00629C1A /* URLParameterEncoding.swift */; };
+		FB4DACF125B58CC800629C1A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4DACF025B58CC800629C1A /* NetworkError.swift */; };
 		FB61F6E325A4BDD800984F2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB61F6E225A4BDD800984F2A /* AppDelegate.swift */; };
 		FB61F6E525A4BDD800984F2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB61F6E425A4BDD800984F2A /* SceneDelegate.swift */; };
 		FB61F6E725A4BDD800984F2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB61F6E625A4BDD800984F2A /* ViewController.swift */; };
 		FB61F6EA25A4BDD800984F2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB61F6E825A4BDD800984F2A /* Main.storyboard */; };
 		FB61F6EC25A4BDDA00984F2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB61F6EB25A4BDDA00984F2A /* Assets.xcassets */; };
 		FB61F6EF25A4BDDA00984F2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB61F6ED25A4BDDA00984F2A /* LaunchScreen.storyboard */; };
+		FBB1230D25B38738008CE9FE /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB1230B25B38738008CE9FE /* OrderTableViewCell.swift */; };
+		FBB1230E25B38738008CE9FE /* OrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB1230C25B38738008CE9FE /* OrderTableViewCell.xib */; };
+		FBB1231C25B48D7E008CE9FE /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB1231A25B48D7E008CE9FE /* FeedTableViewCell.swift */; };
+		FBB1231D25B48D7E008CE9FE /* FeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB1231B25B48D7E008CE9FE /* FeedTableViewCell.xib */; };
+		FBDC274F25B1FA9E000F899B /* task2 in Resources */ = {isa = PBXBuildFile; fileRef = FBDC274E25B1FA9E000F899B /* task2 */; };
 		FBFF358A25A763E9007A2E2F /* task in Resources */ = {isa = PBXBuildFile; fileRef = FBFF358925A763E9007A2E2F /* task */; };
 		FBFF358D25A76432007A2E2F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFF358C25A76432007A2E2F /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		037A4E4ABD3D074E85D23881 /* Pods-Chocofood-iOS-Internship-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chocofood-iOS-Internship-App.debug.xcconfig"; path = "Target Support Files/Pods-Chocofood-iOS-Internship-App/Pods-Chocofood-iOS-Internship-App.debug.xcconfig"; sourceTree = "<group>"; };
+		296DB4CAD957AB0FBD3CC661 /* Pods-Chocofood-iOS-Internship-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chocofood-iOS-Internship-App.release.xcconfig"; path = "Target Support Files/Pods-Chocofood-iOS-Internship-App/Pods-Chocofood-iOS-Internship-App.release.xcconfig"; sourceTree = "<group>"; };
+		696C5B8D8424EA6D5A593AC0 /* Pods_Chocofood_iOS_Internship_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chocofood_iOS_Internship_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB0B6CE125AB6EDE00D51BC3 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		FB0B6CE425AB718800D51BC3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		FB0B6CEE25AD836A00D51BC3 /* MarketplaceEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceEndPoint.swift; sourceTree = "<group>"; };
 		FB27FA1C25A773D200450F24 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		FB4DACE725B58B4200629C1A /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
+		FB4DACEA25B58B7F00629C1A /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		FB4DACED25B58C2C00629C1A /* URLParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoding.swift; sourceTree = "<group>"; };
+		FB4DACF025B58CC800629C1A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		FB61F6DF25A4BDD800984F2A /* Chocofood-iOS-Internship-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chocofood-iOS-Internship-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB61F6E225A4BDD800984F2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB61F6E425A4BDD800984F2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +51,11 @@
 		FB61F6EB25A4BDDA00984F2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB61F6EE25A4BDDA00984F2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB61F6F025A4BDDA00984F2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBB1230B25B38738008CE9FE /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
+		FBB1230C25B38738008CE9FE /* OrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTableViewCell.xib; sourceTree = "<group>"; };
+		FBB1231A25B48D7E008CE9FE /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		FBB1231B25B48D7E008CE9FE /* FeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedTableViewCell.xib; sourceTree = "<group>"; };
+		FBDC274E25B1FA9E000F899B /* task2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = task2; sourceTree = "<group>"; };
 		FBFF358925A763E9007A2E2F /* task */ = {isa = PBXFileReference; lastKnownFileType = text; path = task; sourceTree = "<group>"; };
 		FBFF358C25A76432007A2E2F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,15 +65,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B125742C23A102D31F15E9EE /* Pods_Chocofood_iOS_Internship_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C22F8E266FF9C7C28CA2ED5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				696C5B8D8424EA6D5A593AC0 /* Pods_Chocofood_iOS_Internship_App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AB470FD5D3D018214C21F594 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				037A4E4ABD3D074E85D23881 /* Pods-Chocofood-iOS-Internship-App.debug.xcconfig */,
+				296DB4CAD957AB0FBD3CC661 /* Pods-Chocofood-iOS-Internship-App.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FB0B6CED25AD830900D51BC3 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				FB4DACE625B58B3700629C1A /* Encoding */,
 				FBFF358C25A76432007A2E2F /* NetworkManager.swift */,
 				FB0B6CE125AB6EDE00D51BC3 /* EndPoint.swift */,
 				FB0B6CE425AB718800D51BC3 /* API.swift */,
@@ -68,11 +109,45 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FB4DACE425B588F300629C1A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FBB1230B25B38738008CE9FE /* OrderTableViewCell.swift */,
+				FBB1231A25B48D7E008CE9FE /* FeedTableViewCell.swift */,
+				FBB1230C25B38738008CE9FE /* OrderTableViewCell.xib */,
+				FBB1231B25B48D7E008CE9FE /* FeedTableViewCell.xib */,
+				FB61F6E825A4BDD800984F2A /* Main.storyboard */,
+				FB61F6ED25A4BDDA00984F2A /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FB4DACE525B5891800629C1A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FB61F6E625A4BDD800984F2A /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FB4DACE625B58B3700629C1A /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				FB4DACE725B58B4200629C1A /* JSONParameterEncoder.swift */,
+				FB4DACEA25B58B7F00629C1A /* ParameterEncoding.swift */,
+				FB4DACED25B58C2C00629C1A /* URLParameterEncoding.swift */,
+				FB4DACF025B58CC800629C1A /* NetworkError.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
 		FB61F6D625A4BDD800984F2A = {
 			isa = PBXGroup;
 			children = (
 				FB61F6E125A4BDD800984F2A /* Chocofood-iOS-Internship-App */,
 				FB61F6E025A4BDD800984F2A /* Products */,
+				AB470FD5D3D018214C21F594 /* Pods */,
+				8C22F8E266FF9C7C28CA2ED5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,16 +162,16 @@
 		FB61F6E125A4BDD800984F2A /* Chocofood-iOS-Internship-App */ = {
 			isa = PBXGroup;
 			children = (
+				FB4DACE525B5891800629C1A /* Controller */,
+				FB4DACE425B588F300629C1A /* View */,
 				FB0B6CED25AD830900D51BC3 /* Service */,
 				FB27FA1B25A772D500450F24 /* Model */,
 				FB61F6E225A4BDD800984F2A /* AppDelegate.swift */,
 				FB61F6E425A4BDD800984F2A /* SceneDelegate.swift */,
-				FB61F6E625A4BDD800984F2A /* ViewController.swift */,
-				FB61F6E825A4BDD800984F2A /* Main.storyboard */,
 				FB61F6EB25A4BDDA00984F2A /* Assets.xcassets */,
-				FB61F6ED25A4BDDA00984F2A /* LaunchScreen.storyboard */,
 				FB61F6F025A4BDDA00984F2A /* Info.plist */,
 				FBFF358925A763E9007A2E2F /* task */,
+				FBDC274E25B1FA9E000F899B /* task2 */,
 			);
 			path = "Chocofood-iOS-Internship-App";
 			sourceTree = "<group>";
@@ -108,9 +183,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB61F6F325A4BDDA00984F2A /* Build configuration list for PBXNativeTarget "Chocofood-iOS-Internship-App" */;
 			buildPhases = (
+				A55267F1351931177B1D6E78 /* [CP] Check Pods Manifest.lock */,
 				FB61F6DB25A4BDD800984F2A /* Sources */,
 				FB61F6DC25A4BDD800984F2A /* Frameworks */,
 				FB61F6DD25A4BDD800984F2A /* Resources */,
+				F24F9320C3516DA78F82798E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -158,14 +235,59 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBB1230E25B38738008CE9FE /* OrderTableViewCell.xib in Resources */,
 				FB61F6EF25A4BDDA00984F2A /* LaunchScreen.storyboard in Resources */,
 				FB61F6EC25A4BDDA00984F2A /* Assets.xcassets in Resources */,
 				FB61F6EA25A4BDD800984F2A /* Main.storyboard in Resources */,
+				FBB1231D25B48D7E008CE9FE /* FeedTableViewCell.xib in Resources */,
+				FBDC274F25B1FA9E000F899B /* task2 in Resources */,
 				FBFF358A25A763E9007A2E2F /* task in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A55267F1351931177B1D6E78 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Chocofood-iOS-Internship-App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F24F9320C3516DA78F82798E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Chocofood-iOS-Internship-App/Pods-Chocofood-iOS-Internship-App-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Chocofood-iOS-Internship-App/Pods-Chocofood-iOS-Internship-App-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chocofood-iOS-Internship-App/Pods-Chocofood-iOS-Internship-App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FB61F6DB25A4BDD800984F2A /* Sources */ = {
@@ -173,13 +295,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB61F6E725A4BDD800984F2A /* ViewController.swift in Sources */,
+				FB4DACF125B58CC800629C1A /* NetworkError.swift in Sources */,
 				FB0B6CEF25AD836A00D51BC3 /* MarketplaceEndPoint.swift in Sources */,
+				FB4DACEE25B58C2C00629C1A /* URLParameterEncoding.swift in Sources */,
 				FBFF358D25A76432007A2E2F /* NetworkManager.swift in Sources */,
 				FB0B6CE225AB6EDE00D51BC3 /* EndPoint.swift in Sources */,
+				FB4DACE825B58B4200629C1A /* JSONParameterEncoder.swift in Sources */,
 				FB61F6E325A4BDD800984F2A /* AppDelegate.swift in Sources */,
+				FB4DACEB25B58B7F00629C1A /* ParameterEncoding.swift in Sources */,
 				FB61F6E525A4BDD800984F2A /* SceneDelegate.swift in Sources */,
+				FBB1230D25B38738008CE9FE /* OrderTableViewCell.swift in Sources */,
 				FB27FA1D25A773D200450F24 /* Models.swift in Sources */,
 				FB0B6CE525AB718800D51BC3 /* API.swift in Sources */,
+				FBB1231C25B48D7E008CE9FE /* FeedTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +451,7 @@
 		};
 		FB61F6F425A4BDDA00984F2A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 037A4E4ABD3D074E85D23881 /* Pods-Chocofood-iOS-Internship-App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -341,6 +470,7 @@
 		};
 		FB61F6F525A4BDDA00984F2A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 296DB4CAD957AB0FBD3CC661 /* Pods-Chocofood-iOS-Internship-App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

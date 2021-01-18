@@ -14,9 +14,18 @@ enum MarketplaceEndPoint {
 }
 
 extension MarketplaceEndPoint: EndPoint {
+    var task: HTTPTask {
+        switch self {
+        case .fetchOrders:
+            return .requestParameters(bodyParameters: nil, bodyEncoding: .urlEncoding, urlParameters: ["longitude": "77.006425", "latitude" : "43.34061"])
+        case .postOrder:
+            return .request
+        }
+    }
+    
     
     var url: URL {
-        guard let url = Foundation.URL(string: "https://api.jsonbin.io/") else { fatalError("invalidURL") }
+        guard let url = Foundation.URL(string: "https://hermes.chocofood.kz/api/") else { fatalError("invalidURL") }
         return url
     }
     
@@ -25,7 +34,7 @@ extension MarketplaceEndPoint: EndPoint {
         case .postOrder:
             return "post/id"
         case .fetchOrders:
-            return "b/5ff1946009f7c73f1b6d134f"
+            return "delivery_areas/restaurants/"
         }
     }
     

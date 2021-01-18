@@ -14,6 +14,7 @@ public protocol EndPoint {
     var path: String { get }
     var method: HTTPMethod { get }
     var headers: HTTPHeaders? { get }
+    var task: HTTPTask { get }
 //    var cookie: HTTPCookie { get set}
 }
 
@@ -22,4 +23,17 @@ public enum HTTPMethod: String {
     case post = "POST"
     case update = "UPDATE"
     case delete = "DELETE"
+}
+
+public enum HTTPTask {
+    case request
+    
+    case requestParameters(bodyParameters: Parameters?,
+        bodyEncoding: ParameterEncoding,
+        urlParameters: Parameters?)
+    
+    case requestParametersAndHeaders(bodyParameters: Parameters?,
+        bodyEncoding: ParameterEncoding,
+        urlParameters: Parameters?,
+        additionHeaders: HTTPHeaders?)
 }

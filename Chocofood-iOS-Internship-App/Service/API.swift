@@ -17,13 +17,14 @@ struct API {
     init(endPoint: EndPoint) {
         self.endPoint = endPoint
     }
-    
+    // api generic
     //associatedTypes?
     
     func fetchItems(completion: @escaping (_ result: [Order]?, _ error: Any?) -> () ) { //errors
         networkManager.request(endPoint: endPoint) { (data, response, error) in
             
 //            print(String(data: data!, encoding: .utf8)!)
+            // swift result
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             DispatchQueue.main.async {
@@ -35,7 +36,9 @@ struct API {
                     completion(nil, error)
                 }
             }
+            
         }
+        
     }
     
 //    func fetch<T:Codable>(completion: @escaping (_ result: T?, _ error: Any?) -> () ) { //errors

@@ -12,31 +12,73 @@ class NetworkManager {
     private var task: URLSessionTask?
     
     func request(endPoint: EndPoint, withCompletion completion: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> ()) {
-        
-        var request = URLRequest(url: endPoint.url.appendingPathComponent(endPoint.path), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
-        request.httpMethod = endPoint.method.rawValue
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        if let headers = endPoint.headers {
-            addHeaders(headers: headers, request: &request)
-        } else {
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        let session = URLSession(configuration: .default)
+        do {
+            let request = try self.buildRequest(from: endPoint)
+            task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+                
+                completion(data, response, error)
+                self.task?.cancel()
+            })
+        } catch  {
+            completion(nil, nil, error)
         }
         
-        let session = URLSession(configuration: .default)
-        
-        //MARK: - TODO: DispatchQueue.global(qos: .background)
-        //MARK: - TODO: change to background treads using gcd
-        
-        task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            completion(data, response, error)
-            self.task?.cancel()
-        })
         
         self.task?.resume()
     }
     
-    fileprivate func addHeaders(headers: HTTPHeaders, request: inout URLRequest) {
+    fileprivate func buildRequest(from route: EndPoint) throws -> URLRequest {
+        
+        var request = URLRequest(url: route.url.appendingPathComponent(route.path),
+                                 cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
+                                 timeoutInterval: 10.0)
+        
+        request.httpMethod = route.method.rawValue
+        do {
+            switch route.task {
+            case .request:
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            case .requestParameters(let bodyParameters,
+                                    let bodyEncoding,
+                                    let urlParameters):
+                
+                try self.configureParameters(bodyParameters: bodyParameters,
+                                             bodyEncoding: bodyEncoding,
+                                             urlParameters: urlParameters,
+                                             request: &request)
+                
+            case .requestParametersAndHeaders(let bodyParameters,
+                                              let bodyEncoding,
+                                              let urlParameters,
+                                              let additionalHeaders):
+                
+                self.addHeaders(additionalHeaders, request: &request)
+                try self.configureParameters(bodyParameters: bodyParameters,
+                                             bodyEncoding: bodyEncoding,
+                                             urlParameters: urlParameters,
+                                             request: &request)
+            }
+            return request
+        } catch {
+            throw error
+        }
+    }
+    
+    fileprivate func configureParameters(bodyParameters: Parameters?,
+                                         bodyEncoding: ParameterEncoding,
+                                         urlParameters: Parameters?,
+                                         request: inout URLRequest) throws {
+        do {
+            try bodyEncoding.encode(urlRequest: &request,
+                                    bodyParameters: bodyParameters, urlParameters: urlParameters)
+        } catch {
+            throw error
+        }
+    }
+    
+    fileprivate func addHeaders(_ additionalHeaders: HTTPHeaders?, request: inout URLRequest) {
+        guard let headers = additionalHeaders else { return }
         for (key, value) in headers {
             request.setValue(value, forHTTPHeaderField: key)
         }
