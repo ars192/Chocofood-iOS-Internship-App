@@ -16,6 +16,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableview.backgroundView = nil
+        tableview.backgroundColor = .clear
+        
         self.tableview.dataSource = self
         self.tableview.delegate = self
         
