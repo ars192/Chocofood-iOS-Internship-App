@@ -38,7 +38,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
 //        [1 2 {3 4} 5 6 {7 8} 9 10] - 8 cell
-        
         return self.orders.count
     }
     

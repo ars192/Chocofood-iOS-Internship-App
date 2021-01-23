@@ -35,13 +35,13 @@ class MainTabController: UITabBarController {
     
     func configureUI() {
         view.tintColor = .red
-        view.addSubview(actionButton)
-        actionButton.translatesAutoresizingMaskIntoConstraints = false
-        actionButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
-        actionButton.widthAnchor.constraint(equalToConstant: 56).isActive = true
-        actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -64).isActive = true
-        actionButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
-        actionButton.layer.cornerRadius = 56 / 2
+//        view.addSubview(actionButton)
+//        actionButton.translatesAutoresizingMaskIntoConstraints = false
+//        actionButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+//        actionButton.widthAnchor.constraint(equalToConstant: 56).isActive = true
+//        actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -64).isActive = true
+//        actionButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
+//        actionButton.layer.cornerRadius = 56 / 2
     }
     
     func configureViewControllers() {
@@ -62,9 +62,7 @@ class MainTabController: UITabBarController {
         nav4.tabBarItem.title = "Корзина"
         
         let controllers = [nav1, nav2, nav3, nav4]
-        viewControllers = controllers.map {
-            UINavigationController(rootViewController: $0)
-        }
+        viewControllers = controllers
         
     }
     
