@@ -9,6 +9,7 @@ import UIKit
 
 class CateringController: UIViewController {
     
+    private var menuDelegate: MenuDelegate?
     private var orders: [Order] = []
     
     var restaurantCollectionView: UICollectionView!
@@ -51,7 +52,7 @@ class CateringController: UIViewController {
     }
     
 //    private func goToCatering() {
-//        navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+//        navigationController?.pushViewController(MenuController(), animated: true)
 //    }
 
 }
@@ -98,5 +99,9 @@ extension CateringController: UICollectionViewDelegateFlowLayout {
 extension CateringController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        let destination = MenuController()
+        menuDelegate = destination
+        menuDelegate?.passKey(key: orders[indexPath.row].restaurant.pk)
+        navigationController?.pushViewController(destination, animated: true)
     }
 }
