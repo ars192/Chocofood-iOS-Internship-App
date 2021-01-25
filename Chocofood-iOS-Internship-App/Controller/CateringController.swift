@@ -10,22 +10,21 @@ import UIKit
 class CateringController: UIViewController {
     
     private var menuDelegate: MenuDelegate?
-    private var orders: [Order] = []
-    
-    var restaurantCollectionView: UICollectionView!
+    private var cateringList: [Catering] = []
+    private var restaurantCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = . purple
-        
-//        let view = UIView()
+        view.backgroundColor = .purple
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.font: UIFont(name: "Chalkduster", size: 27)!,
+             NSAttributedString.Key.foregroundColor: UIColor.black]
         
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 16, bottom: 6, right: 16)
-//        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 60)
         layout.scrollDirection = .vertical
-//        layout.minimumInteritemSpacing = 
-        restaurantCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+        
+        restaurantCollectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
         restaurantCollectionView.showsVerticalScrollIndicator = false
         restaurantCollectionView.translatesAutoresizingMaskIntoConstraints = false
         restaurantCollectionView.dataSource = self
@@ -33,44 +32,39 @@ class CateringController: UIViewController {
         restaurantCollectionView.backgroundColor = .gray
         restaurantCollectionView.register(RestaurantCell.self, forCellWithReuseIdentifier: "RestaurantCell")
         restaurantCollectionView.register(RestaurantSmallCell.self, forCellWithReuseIdentifier: "RestaurantSmallCell")
+        
         view.addSubview(restaurantCollectionView)
         
-        let MarketplaceAPI = API(endPoint: MarketplaceEndPoint.fetchOrders)
-        MarketplaceAPI.fetchItems { (result, error) in
+        let MarketplaceAPI = API(endPoint: MarketplaceEndPoint.fetchCateringList)
+        MarketplaceAPI.fetchItems(type: [Catering].self) { (result, error) in
             if let result = result {
-                self.orders = result
-                self.orders.reverse()
+                self.cateringList = result
                 self.restaurantCollectionView.reloadData()
             } else {
                 fatalError(error.debugDescription)
             }
         }
-        
-        
-        
-        // Do any additional setup after loading the view.
     }
     
-//    private func goToCatering() {
-//        navigationController?.pushViewController(MenuController(), animated: true)
+//    private func seses(completion: @escaping (_ result: [Catering]?, _ error: Any?) -> ()) {
+//        let marketplaceAPI = API(endPoint: MarketplaceEndPoint.fetchCateringList)
+//        marketplaceAPI.fetchItems(completion: completion)
 //    }
-
 }
 
 extension CateringController: UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return orders.count
+        return cateringList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if (indexPath.row % 4 == 2) || (indexPath.row % 4 == 3) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantSmallCell", for: indexPath) as! RestaurantSmallCell
-            cell.bindData(with: orders[indexPath.row])
+            cell.bindData(with: cateringList[indexPath.row])
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
-            cell.bindData(with: orders[indexPath.row])
+            cell.bindData(with: cateringList[indexPath.row])
             return cell
         }
     }
@@ -99,9 +93,21 @@ extension CateringController: UICollectionViewDelegateFlowLayout {
 extension CateringController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let destination = MenuController()
-        menuDelegate = destination
-        menuDelegate?.passKey(key: orders[indexPath.row].restaurant.pk)
-        navigationController?.pushViewController(destination, animated: true)
+        let restaurant = cateringList[indexPath.row].restaurant
+        let menuTop = MenuTopViewController()
+        let menuBottom = MenuBottomViewController()
+        
+        menuTop.passData(restaurant)
+        menuBottom.passData(restaurant)
+        
+        let destination = MenuContainerViewController(
+            contentViewController: menuTop,
+            bottomSheetViewController: menuBottom,
+            bottomSheetConfiguration: .init(
+                height: view.bounds.height,
+                initialOffset: view.bounds.height * 0.65 + view.safeAreaInsets.bottom
+            )
+        )
+        self.navigationController?.pushViewController(destination, animated: true)
     }
 }

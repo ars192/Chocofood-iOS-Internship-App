@@ -245,7 +245,7 @@ class RestaurantSmallCell: UICollectionViewCell {
         
     }
     
-    func bindData(with order: Order) {
+    func bindData(with order: Catering) {
         print(order.restaurant.title)
         restaurantTitle.text = order.restaurant.title
         restaurantImage.sd_setImage(with: order.restaurant.image, completed: .none)

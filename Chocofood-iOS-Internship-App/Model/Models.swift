@@ -10,7 +10,7 @@ import Foundation
 
 //MARK: - Add CodingKey to pk(?)
 
-struct Order: Codable {
+struct Catering: Codable {
     let deliveryTariff:     DeliveryTariff
     let deliveryTime:       DeliveryTime
     let restaurant:         Restaurant
@@ -89,4 +89,25 @@ struct Restaurant: Codable {
 struct ErrorModel: Codable {
     let message:            String
 //    let error:              String        // i tried to fetch invalid id and in the response body there was only message keyword
+}
+
+struct Menu: Codable {
+    let foodTypes:          [FoodType]
+}
+
+struct FoodType: Codable {
+    let title:              String
+    let oid:                String
+    let position:           Int
+    let foods:              [Food]
+}
+
+struct Food: Codable {
+    let title:              String
+    let state:              String
+    let price:              Int
+    let logo:               URL?
+    let sellingText:        String
+    let oid:                String
+    let position:           Int
 }

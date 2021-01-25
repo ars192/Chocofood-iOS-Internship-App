@@ -15,50 +15,40 @@ class MenuController: UIViewController, MenuDelegate {
 
     lazy var keyTitle: UILabel = {
         let title = UILabel()
-        title.text = "not passed"
+        title.text = ""
         title.textColor = .red
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()
     
     private var key = "NULL"
-    
+    private var menuList = [FoodType]()
     func passKey(key: String) {
         self.key = key
     }
-    
-//    init(key: String) {
-//        self.key = key
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
         keyTitle.text = self.key
+        
+        let MarketplaceAPI = API(endPoint: MarketplaceEndPoint.fetchRestaurantMenu(self.key))
+        MarketplaceAPI.fetchItems(type: Menu.self) { (result, error) in
+            if let result = result {
+                self.menuList = result.foodTypes
+                for item in self.menuList {
+                    print("----")
+                    dump(item)
+                    print("----")
+                }
+            } else {
+                fatalError(error.debugDescription)
+            }
+        }
+        
+        
         view.addSubview(keyTitle)
         keyTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         keyTitle.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        // Do any additional setup after loading the view.
     }
-    
-//    override func loadView() {
-//        super.loadView()
-//
-//    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

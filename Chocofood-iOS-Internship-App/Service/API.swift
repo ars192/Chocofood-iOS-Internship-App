@@ -20,7 +20,7 @@ struct API {
     // api generic
     //associatedTypes?
     
-    func fetchItems(completion: @escaping (_ result: [Order]?, _ error: Any?) -> () ) { //errors
+    func fetchItems<T:Codable>(type: T.Type, completion: @escaping (_ result: T?, _ error: Any?) -> () ) { //errors
         networkManager.request(endPoint: endPoint) { (data, response, error) in
             
 //            print(String(data: data!, encoding: .utf8)!)
@@ -29,11 +29,16 @@ struct API {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             DispatchQueue.main.async {
                 if let httpResponse = response as? HTTPURLResponse, (200..<300) ~= httpResponse.statusCode {
-                    let orders = try? decoder.decode([Order].self, from: data!)
-                    completion(orders, nil)
+                    do {
+                        let orders = try decoder.decode(T.self, from: data!)
+                        completion(orders, nil)
+                    } catch {
+                        completion(nil, error.localizedDescription)
+                    }
+                    
                 } else {
-                    let error = try? decoder.decode(ErrorModel.self, from: data!)
-                    completion(nil, error)
+//                    let error = try? decoder.decode(ErrorModel.self, from: error.debugDescription)
+                    completion(nil, error.debugDescription)
                 }
             }
             

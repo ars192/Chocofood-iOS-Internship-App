@@ -9,16 +9,19 @@ import Foundation
 
 
 enum MarketplaceEndPoint {
-    case fetchOrders
+    case fetchCateringList
     case postOrder
+    case fetchRestaurantMenu(_ id: String)
 }
 
 extension MarketplaceEndPoint: EndPoint {
     var task: HTTPTask {
         switch self {
-        case .fetchOrders:
+        case .fetchCateringList:
             return .requestParameters(bodyParameters: nil, bodyEncoding: .urlEncoding, urlParameters: ["longitude": "77.006425", "latitude" : "43.34061"])
         case .postOrder:
+            return .request
+        case .fetchRestaurantMenu(_):
             return .request
         }
     }
@@ -33,8 +36,10 @@ extension MarketplaceEndPoint: EndPoint {
         switch self {
         case .postOrder:
             return "post/id"
-        case .fetchOrders:
+        case .fetchCateringList:
             return "delivery_areas/restaurants/"
+        case .fetchRestaurantMenu(let id):
+            return "extended_restaurants/\(id)"
         }
     }
     
@@ -42,8 +47,11 @@ extension MarketplaceEndPoint: EndPoint {
         switch self {
         case .postOrder:
             return HTTPMethod.post
-        case .fetchOrders:
+        case .fetchCateringList:
             return HTTPMethod.get
+        case .fetchRestaurantMenu(_):
+            return HTTPMethod.get
+            
         }
     }
     
@@ -51,7 +59,9 @@ extension MarketplaceEndPoint: EndPoint {
         switch self {
         case .postOrder:
             return nil
-        case .fetchOrders:
+        case .fetchCateringList:
+            return nil
+        case .fetchRestaurantMenu(_):
             return nil
         }
     }

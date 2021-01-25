@@ -28,7 +28,7 @@ class OrderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(with order: Order) {
+    func setup(with order: Catering) {
         print(order.restaurant.title)
         orderTitle.text = order.restaurant.title
         orderImage.sd_setImage(with: order.restaurant.image, completed: .none)

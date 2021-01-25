@@ -9,13 +9,12 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
-    private var orders: [Order] = []
+    private var orders: [Catering] = []
     
     @IBOutlet weak var tableview: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableview.backgroundView = nil
         tableview.backgroundColor = .clear
         
@@ -24,8 +23,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.registerTableViewCells()
         
-        let MarketplaceAPI = API(endPoint: MarketplaceEndPoint.fetchOrders)
-        MarketplaceAPI.fetchItems { (result, error) in
+        let MarketplaceAPI = API(endPoint: MarketplaceEndPoint.fetchCateringList)
+        MarketplaceAPI.fetchItems(type: [Catering].self) { (result, error) in
             if let result = result {
                 self.orders = result
                 self.tableview.reloadData()
@@ -37,7 +36,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-//        [1 2 {3 4} 5 6 {7 8} 9 10] - 8 cell
         return self.orders.count
     }
     

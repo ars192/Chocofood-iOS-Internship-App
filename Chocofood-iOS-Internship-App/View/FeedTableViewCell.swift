@@ -40,7 +40,7 @@ class FeedTableViewCell: UITableViewCell {
         let padding = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         contentView.frame = contentView.frame.inset(by: padding)
     }
-    func setupFirstView(with order: Order) {
+    func setupFirstView(with order: Catering) {
         firstViewTitle.text = order.restaurant.title
         firstViewImage.sd_setImage(with: order.restaurant.image, completed: .none)
         firstViewRestaurantRating.text = "\(Double(order.restaurant.rating)*5/100)"
@@ -49,7 +49,7 @@ class FeedTableViewCell: UITableViewCell {
         firstViewDeliveryMinimumTime.text = "\(order.deliveryTime.lowLimitMinutes) мин."
     }
     
-    func setupSecondView(with order: Order) {
+    func setupSecondView(with order: Catering) {
         secondViewTitle.text = order.restaurant.title
         secondViewImage.sd_setImage(with: order.restaurant.image, completed: .none)
         secondViewRestaurantRating.text = "\(Double(order.restaurant.rating)*5/100)"
