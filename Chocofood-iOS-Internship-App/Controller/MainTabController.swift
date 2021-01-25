@@ -25,26 +25,12 @@ class MainTabController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationController?.isNavigationBarHidden = true
-//        self.navigationController?.navigationBar.isTranslucent = false
-//        self.navigationController?.setNavigationBarHidden(true, animated: true)
-//        self.navigationController?.tabBarController?.tabBar.barStyle = .default
-//        self.navigationController?.tabBarController?.tabBar.barTintColor = .none
-//        self.navigationController?.tabBarController?.tabBar.backgroundColor = .none
         configureViewControllers()
         configureUI()
-        // Do any additional setup after loading the view.
     }
     
     func configureUI() {
         view.tintColor = .red
-//        view.addSubview(actionButton)
-//        actionButton.translatesAutoresizingMaskIntoConstraints = false
-//        actionButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
-//        actionButton.widthAnchor.constraint(equalToConstant: 56).isActive = true
-//        actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -64).isActive = true
-//        actionButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
-//        actionButton.layer.cornerRadius = 56 / 2
     }
     
     func configureViewControllers() {
@@ -71,7 +57,6 @@ class MainTabController: UITabBarController {
     
     func templateNavigationController(image: UIImage?, rootViewController: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: rootViewController)
-//        nav.isNavigationBarHidden = true
         nav.tabBarItem.image = image
         nav.navigationBar.tintColor = .white
         return nav

@@ -93,12 +93,13 @@ extension CateringController: UICollectionViewDelegateFlowLayout {
 extension CateringController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let restaurant = cateringList[indexPath.row].restaurant
+        let url = cateringList[indexPath.row].restaurant.image
+        let catering = cateringList[indexPath.row]
         let menuTop = MenuTopViewController()
         let menuBottom = MenuBottomViewController()
         
-        menuTop.passData(restaurant)
-        menuBottom.passData(restaurant)
+        menuTop.passImageUrl(url)
+        menuBottom.passCatering(catering)
         
         let destination = MenuContainerViewController(
             contentViewController: menuTop,

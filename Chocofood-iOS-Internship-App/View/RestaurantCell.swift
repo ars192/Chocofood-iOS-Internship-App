@@ -141,7 +141,6 @@ class RestaurantCell: UICollectionViewCell {
         view.spacing = 12
         view.distribution = .equalSpacing
         view.axis = .horizontal
-//        view.backgroundColor = .green
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

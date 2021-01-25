@@ -17,7 +17,6 @@ final class MenuContainerViewController: BottomSheetContainerViewController<Menu
         self.showBottomSheet(animated: true)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -12,14 +12,14 @@ class MenuBottomViewController: UIViewController {
     
     private var categoryCollectionView: UICollectionView!
     private var menuTableView: UITableView!
-    private var restaurant: Restaurant!
+    private var catering: Catering!
     private var menuList = [FoodType]()
     private var menu: [Food] = []
     private var categories: [String] = []
     private var key: String!
     private var delegate: MenuContainerProtocol?
     
-    lazy var restaurantTitle: UILabel = {
+    lazy var restaurantTitleLabel: UILabel = {
         let title = UILabel()
         title.font = UIFont(name: "AvenirNext-Bold", size: 12)
         title.textColor = UIColor(red: 74/255, green: 75/255, blue: 77/255, alpha: 1)
@@ -30,7 +30,7 @@ class MenuBottomViewController: UIViewController {
         return title
     }()
     
-    lazy var deliveryTitle: UILabel = {
+    lazy var deliveryTitleLabel: UILabel = {
         let title = UILabel()
         title.font = UIFont(name: "AvenirNext-Bold", size: 12)
         title.textColor = UIColor(red: 74/255, green: 75/255, blue: 77/255, alpha: 1)
@@ -41,7 +41,7 @@ class MenuBottomViewController: UIViewController {
         return title
     }()
     
-    lazy var deliveryPrice: UILabel = {
+    lazy var deliveryPriceLabel: UILabel = {
         let title = UILabel()
         title.font = UIFont(name: "AvenirNext-Bold", size: 12)
         title.textColor = UIColor(red: 74/255, green: 75/255, blue: 77/255, alpha: 1)
@@ -52,17 +52,49 @@ class MenuBottomViewController: UIViewController {
         return title
     }()
     
-    func passData(_ restaurant: Restaurant) {
-        self.restaurant = restaurant
-    }
+    lazy var infoButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "info"), for: .normal)
+        button.backgroundColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var reviewsButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .white
+        button.titleLabel?.font = UIFont(name: "AvenirNext-Bold", size: 12)
+        button.setTitleColor(UIColor.yellow, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var deliveryTimeButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .white
+        button.titleLabel?.font = UIFont(name: "AvenirNext-Bold", size: 12)
+        button.setTitleColor(UIColor(red: 74/255, green: 75/255, blue: 77/255, alpha: 1), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var rahmetButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "rahmet"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.clipsToBounds = true
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViews()
         setupConstraints()
+        [deliveryTimeButton, infoButton, reviewsButton].forEach { makeShadowed(view: $0)
+        }
         
-        let MarketplaceAPI = API(endPoint: MarketplaceEndPoint.fetchRestaurantMenu(self.restaurant.pk))
+        let MarketplaceAPI = API(endPoint: MarketplaceEndPoint.fetchRestaurantMenu(self.catering.restaurant.pk))
         MarketplaceAPI.fetchItems(type: Menu.self) { [self] (result, error) in
             if let result = result {
                 self.menuList = result.foodTypes
@@ -87,8 +119,6 @@ class MenuBottomViewController: UIViewController {
         self.view.layer.cornerRadius = 20
         self.view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-//        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.scrollDirection = .horizontal
@@ -108,48 +138,87 @@ class MenuBottomViewController: UIViewController {
         menuTableView.delegate = self
         
         menuTableView.register(MenuCell.self, forCellReuseIdentifier: "MenuCell")
-        restaurantTitle.text = restaurant.title
-        deliveryTitle.text = "Доставка от \(restaurant.title):"
-//        deliveryPrice.text = restaurant.
+        restaurantTitleLabel.text = catering.restaurant.title
+        deliveryTitleLabel.text = "Доставка от \(catering.restaurant.title):"
+        reviewsButton.setTitle("⋆ \(catering.restaurant.rating) Отзыва", for: .normal)
+        deliveryTimeButton.setTitle("\(catering.deliveryTime.lowLimitMinutes) - \(catering.deliveryTime.upperLimitMinutes) минут", for: .normal)
+        //        deliveryPrice.text = restaurant.
         
-        view.addSubview(restaurantTitle)
-        view.addSubview(deliveryTitle)
-        view.addSubview(deliveryPrice)
+        view.addSubview(infoButton)
+        view.addSubview(reviewsButton)
+        view.addSubview(deliveryTimeButton)
+        view.addSubview(rahmetButton)
+        view.addSubview(restaurantTitleLabel)
+        view.addSubview(deliveryTitleLabel)
+        view.addSubview(deliveryPriceLabel)
         view.addSubview(categoryCollectionView)
         view.addSubview(menuTableView)
     }
     
     func setupConstraints() {
         
-        restaurantTitle.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -5).isActive = true
-        restaurantTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 5).isActive = true
-        restaurantTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 25).isActive = true
+        infoButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -3).isActive = true
+        infoButton.centerYAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        infoButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        infoButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        infoButton.layer.cornerRadius = 15
         
-        deliveryTitle.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -5).isActive = true
-        deliveryTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 5).isActive = true
-        deliveryTitle.topAnchor.constraint(equalTo: restaurantTitle.bottomAnchor, constant: 20).isActive = true
+        reviewsButton.rightAnchor.constraint(equalTo: infoButton.leftAnchor, constant: -3).isActive = true
+        reviewsButton.centerYAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        reviewsButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        reviewsButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        reviewsButton.layer.cornerRadius = 15
         
-        deliveryPrice.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -5).isActive = true
-        deliveryPrice.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 5).isActive = true
-        deliveryPrice.topAnchor.constraint(equalTo: deliveryTitle.bottomAnchor, constant: 10).isActive = true
+        deliveryTimeButton.rightAnchor.constraint(equalTo: reviewsButton.leftAnchor, constant: -3).isActive = true
+        deliveryTimeButton.centerYAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        deliveryTimeButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        deliveryTimeButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        deliveryTimeButton.layer.cornerRadius = 15
+        
+        rahmetButton.rightAnchor.constraint(equalTo: deliveryTimeButton.leftAnchor, constant: -3).isActive = true
+        rahmetButton.centerYAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        rahmetButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        rahmetButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        rahmetButton.layer.cornerRadius = 15
+    
+        restaurantTitleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+        restaurantTitleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        restaurantTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 18).isActive = true
+        
+        deliveryTitleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+        deliveryTitleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        deliveryTitleLabel.topAnchor.constraint(equalTo: restaurantTitleLabel.bottomAnchor, constant: 15).isActive = true
+        
+        deliveryPriceLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+        deliveryPriceLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        deliveryPriceLabel.topAnchor.constraint(equalTo: deliveryTitleLabel.bottomAnchor, constant: 7).isActive = true
         
         categoryCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         categoryCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        categoryCollectionView.topAnchor.constraint(equalTo: deliveryPrice.bottomAnchor, constant: 10).isActive = true
+        categoryCollectionView.topAnchor.constraint(equalTo: deliveryPriceLabel.bottomAnchor, constant: 10).isActive = true
         categoryCollectionView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         menuTableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         menuTableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
         menuTableView.topAnchor.constraint(equalTo: categoryCollectionView.bottomAnchor, constant: 10).isActive = true
         menuTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
+    }
+    
+    func passCatering(_ catering: Catering) {
+        self.catering = catering
     }
     
     private func registerTableViewCells() {
         let menuCell = UINib(nibName: "MenuCell",
                                   bundle: nil)
         self.menuTableView.register(menuCell, forCellReuseIdentifier: "MenuCell")
-
+    }
+    
+    func makeShadowed(view: UIView) {
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowOffset = .zero
+        view.layer.shadowRadius = 3
     }
 }
 

@@ -10,7 +10,6 @@ import UIKit
 import UIKit
 
 class RestaurantSmallCell: UICollectionViewCell {
-    
     lazy var restaurantTitle: UILabel! = {
         let title = UILabel()
         title.font = UIFont(name: "AvenirNext-Bold", size: 12)
@@ -215,7 +214,6 @@ class RestaurantSmallCell: UICollectionViewCell {
         ratingView.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
         ratingView.topAnchor.constraint(equalTo: topAnchor, constant: 4).isActive = true
         ratingView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-//        ratingView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -93).isActive = true
         
         scooterImage.leftAnchor.constraint(equalTo: deliveryPriceView.leftAnchor, constant: 6.75).isActive = true
         scooterImage.centerYAnchor.constraint(equalTo: ratingView.centerYAnchor).isActive = true

@@ -65,10 +65,4 @@ extension MarketplaceEndPoint: EndPoint {
             return nil
         }
     }
-    
-//
-//    var cookies: HTTPCookie {
-//
-//    }
-    
 }

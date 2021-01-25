@@ -9,15 +9,15 @@ import UIKit
 import SDWebImage
 class MenuTopViewController: UIViewController {
     
-    private var restaurant: Restaurant!
+    private var imageUrl: URL!
     private var image: UIImage!
-    func passData(_ restaurant: Restaurant) {
-        self.restaurant = restaurant
+    
+    func passImageUrl(_ url: URL) {
+        self.imageUrl = url
     }
     
     lazy var imageBackground: UIImageView = {
         let view = UIImageView()
-//        view.image = self.restaurant
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -25,7 +25,7 @@ class MenuTopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .gray
-        imageBackground.sd_setImage(with: restaurant.image)
+        imageBackground.sd_setImage(with: imageUrl)
         view.addSubview(imageBackground)
         imageBackground.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         imageBackground.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
